@@ -1,0 +1,33 @@
+<p>productlist works!</p>
+
+<div class="container">
+    <h2>Product List</h2>
+    <button *ngIf="isAdmin" (click)="addProduct()" class="btn btn-primary mb-3">Add Product</button>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Product ID</th>
+          <th>Product Name</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Manufacturing Year</th>
+          <th>Warranty (Years)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.proId }}</td>
+          <td>{{ product.proName }}</td>
+          <td>{{ product.proPrice | currency: 'INR' }}</td>
+          <td>{{ product.category }}</td>
+          <td>{{ product.manufacturingYear }}</td>
+          <td>{{ product.warrantyInYears }}</td>
+          <td *ngIf="isAdmin">
+            <button (click)="editProduct(product)" class="btn btn-warning btn-sm">Update</button>
+            <button (click)="deleteProduct(product.proId)" class="btn btn-danger btn-sm">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+ 
